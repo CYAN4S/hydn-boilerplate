@@ -1,4 +1,4 @@
-# Welcome to Jekyll!
+# Welcome to Hydn, the ultimate theme for Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
 # which you are expected to set up once and rarely edit after that. If you find
@@ -24,13 +24,23 @@ description: >- # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/hydn-boilerplate" # the subpath of your site, e.g. /blog
+url: "https://www.cyan4s.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
-# Build settings
-theme: hydn
+
+# If you use GitHub Pages to build/host the blog, use this.
+remote_theme: CYAN4S/hydn
+
+# If you have another plans(such as GitHub Actions or any other deployment services),
+# remove the `remote_theme: CYAN4S/hydn` above and uncomment the line below.
+# It will directly download the theme from RubyGem.
+# Notice that if you use the line below, IT WON'T WORK AT GITHUB PAGES.
+# theme: hydn
+
+
+# Additional plugins.
 plugins:
   - jekyll-feed
 
@@ -53,3 +63,71 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+logo:
+lang: ko_KR
+
+# Disqus
+disqus: True
+disqus_shortname: "hydn"
+# disqus는 온라인 댓글 시스템. 댓글 기능을 사용하기 위해 disqus를 이용할 것인지 여부와 만약 사용하면
+# disqus shortname을 입력 ( disqus username이 아님 )
+
+tipue_search:
+  include:
+    pages: false
+    collections: []
+  exclude:
+    files: [search.html, index.html, tagpost.html]
+    categories: []
+    tags: []
+
+navigation: True
+# Navigation bar link를 보여줄건지 여부
+
+subscribers: True
+# subscriber 기능을 사용할건지의 여부
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Anonymous"
+  - scope:
+      path: ""
+      type: "category-pages"
+    values:
+      layout: "category-page"
+      permalink: /category/:title
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author-page"
+      permalink: /author/:title
+      image: assets/img/default-profile.png
+  - scope:
+      path: ""
+      type: "series"
+    values:
+      layout: "series-page"
+      permalink: /series/:title
+
+sass:
+  style: compressed
+
+collections:
+  authors:
+    output: true
+  category-pages:
+    output: true
+    permalink: /:collection/:name
+  series:
+    output: true
+
+paginate: 2
+paginate_path: "/all/:num/"
+
+date_format: "%Y/%m/%d"
